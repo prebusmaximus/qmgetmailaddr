@@ -18,180 +18,179 @@
  */
 
 //
-// Inkluderer bibliotek som er nødvendige for at programmet skal kunne kjøre
-// 
+// Includes libraries need to run the application
+//
 #include "qmgetmailaddr.h"
 
 /*
  * 
- * Hoved funksjonen som kjøres aller først i programmet,
- * denne tar seg også av å initialisere alle variabler og innstillinger
- * som programmet trenger for å få gjort jobben sin.
+ * Main function, first running in the application. The main function
+ * deals with initalizing all variables and settings need for the application.
  * 
  */
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-   //
-   // Deklarerer variabler for bruk i funksjonen
-   // 
-   int    i;
-   int    display;
-   
-   //
-   // Feilsøker at brukeren for qmail eksisterer slik at vi kan hente ut
-   // sti til hvor assign fila for brukere er.
-   //
-   p = getpwnam(QMAILU);   
-   if (!p)
-   {
-      // Vi kunne ikke hente informasjon om brukeren, gi en feilmelding og avslutt deretter programmet
-      fprintf(stderr, "qmgetmailaddr failed: Could'nt locate the qmail user (%s)....\n", QMAILU);
-      exit( EXIT_FAILURE );
-   }
-   else
-   {
-      //
-      // Vi klarte å hente ut informasjon om qmailbrukeren, da må vi klargjøre stien til brukerfilen. Og, åpne
-      // filen slik at dette er klargjort til funksjoner som evt. skal benytte seg av denne.
-      // 
-      strcpy(assignpath, p->pw_dir);
-      strcat(assignpath, "/users/assign");
-      assign_fp = fopen(assignpath, "r");
-      if (!assign_fp)
-      {
-	 //
-	 // Vi klarte ikke å åpne filen med brukerdata, avslutt og gi en feilmelding
-	 //
-	 fprintf(stderr, "qmgetmailaddr failed: Could'nt open the file %s for read access (Permission denied?)...\n", assignpath);
-	 exit( EXIT_FAILURE );
-      }
-   }   	
+	//
+	// Main declaration
+	//
+	int i;
+	int display;
 
-   //
-   // Sjekker argumenter som er blitt sendt til programmet.
-   //
-   if ((argc-1) == 0)
-   {
-      //
-      // Ingen argumenter er blitt sendt til programmet, setter da igang å hente ut ALLE e-postadresser.
-      //
-      getdomainpath("");      
-   }
-   else
-   {
-      display = 0;
-      
-      //
-      // Det ble sendt argumenter til programmet, da må vi til å parse litt... :)
-      //
-      for (i = 1; i <= (argc-1); i++)
-      {
-	 if (strcmp(argv[i], "-a") == 0 || strcmp(argv[i], "--all") == 0)
-	 {
-	    display = display+1;
-	 }
-	 else if (strcmp(argv[i], "-d") == 0 || strcmp(argv[i], "--domain") == 0)
-	 {
-	    display = display+2;
-	    i++;
-	    if (argv[i])
-	    {		 
-	       if (strcmp(argv[i], "-e") != 0 && strcmp(argv[i], "--exclude") != 0 &&
-		   strcmp(argv[i], "-a") != 0 && strcmp(argv[i], "--all") != 0 &&
-		   strcmp(argv[i], "-d") != 0 && strcmp(argv[i], "--domain") != 0 &&
-		   strcmp(argv[i], "-h") != 0 && strcmp(argv[i], "--help") != 0 &&
-		   strcmp(argv[i], "") != 0)
-	       {
-		  strcpy(domene, argv[i]);
-	       }
-	    }	    
-	    else
-	    {
-	       fprintf(stderr, "qmgetmailaddr failed: Missing domain...\n\n");
-	       printusage();
-	       exit( EXIT_FAILURE );
-	    }	    
-	 }
-	 else if (strcmp(argv[i], "-e") == 0 || strcmp(argv[i], "--exclude") == 0)
-	 {
-	    i++;
-	    if (argv[i])
-	    {	       
-	       if (strcmp(argv[i], "-e") != 0 && strcmp(argv[i], "--exclude") != 0 &&
-		   strcmp(argv[i], "-a") != 0 && strcmp(argv[i], "--all") != 0 &&
-		   strcmp(argv[i], "-d") != 0 && strcmp(argv[i], "--domain") != 0 &&
-		   strcmp(argv[i], "-h") != 0 && strcmp(argv[i], "--help") != 0 &&
-		   strcmp(argv[i], "") != 0)
-	       {
-		  strcpy(excluden, argv[i]);
-	       }	  
-	    }
-	    else
-	    {
-	       fprintf(stderr, "qmgetmailaddr failed: Missing name to exclude... (Ex. postmaster)\n\n");
-	       printusage();
-	       exit( EXIT_FAILURE );
-	    }	    	    
-	 }
-	 else if (strcmp(argv[i], "-o") == 0 || strcmp(argv[i], "--outputfile") == 0)
-	 {
-	    i++;
-	    if (argv[i])
-	    {	       
-	       if (strcmp(argv[i], "-e") != 0 && strcmp(argv[i], "--exclude") != 0 &&
-		   strcmp(argv[i], "-a") != 0 && strcmp(argv[i], "--all") != 0 &&
-		   strcmp(argv[i], "-o") != 0 && strcmp(argv[i], "--outputfile") != 0 &&
-		   strcmp(argv[i], "-d") != 0 && strcmp(argv[i], "--domain") != 0 &&
-		   strcmp(argv[i], "-h") != 0 && strcmp(argv[i], "--help") != 0 &&
-		   strcmp(argv[i], "") != 0)
-	       {
-		  strcpy(exportfn, argv[i]);
-	       }	  
-	    }
-	    else
-	    {
-	       fprintf(stderr, "qmgetmailaddr failed: Missing filename for export...\n\n");
-	       printusage();
-	       exit( EXIT_FAILURE );
-	    }	    	    
-	 }	 
-	 else
-	 {
-	    printusage();
-	    exit( EXIT_SUCCESS );
-	 }
-      }
-      
-      if (display == 1)
-      {
-	 getdomainpath("");
-      }
-      else if (display == 2)
-      {
-	 getdomainpath(domene);
-      }
-      else if (display == 3)
-      {
-	 fprintf(stderr, "qmgetmailaddr failed: You cannot run -a and -d at the same time...\n\n");
-	 printusage();
-	 exit( EXIT_FAILURE );
-      }
-      else
-      {
-	 if (!excluden)
-	 {	      
-	    printusage();
-	    exit( EXIT_SUCCESS );
-	 }
-	 else
-	   getdomainpath("");
-      }
-   }   	
-   
-   //
-   // Rydde opp litt etter oss...
-   //
-   fclose(assign_fp);
+	//
+	// Checking for path of the QMAIL user in order to get the correct path of the assign file from
+	// qmail.
+	//
+	p = getpwnam(QMAILU);
+	if (!p)
+	{
+		// Could not fetch folder location, reply with error and exit application.
+		fprintf(stderr, "qmgetmailaddr failed: Could'nt locate the qmail user (%s)....\n", QMAILU);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		//
+		// Succesfully got the information on the qmail users, lets make the path correct for the userfile and open
+		// the file for further functions and stuff...
+		//
+		strcpy(assignpath, p->pw_dir);
+		strcat(assignpath, "/users/assign");
+		assign_fp = fopen(assignpath, "r");
+		if (!assign_fp)
+		{
+			//
+			// Could not open file containing userdata, exit application and return error
+			//
+			fprintf(stderr, "qmgetmailaddr failed: Could'nt open the file %s for read access (Permission denied?)...\n", assignpath);
+			exit(EXIT_FAILURE);
+		}
+	}
 
-   return EXIT_SUCCESS;
+	//
+	// Check command line arguments.
+	//
+	if ((argc - 1) == 0)
+	{
+		//
+		// No arguments sent to application, starting procedure to fetch ALL e-mailaddresses on the system.
+		//
+		getdomainpath("");
+	}
+	else
+	{
+		display = 0;
+
+		//
+		// Det ble sendt argumenter til programmet, da mï¿½ vi til ï¿½ parse litt... :)
+		//
+		for (i = 1; i <= (argc - 1); i++)
+		{
+			if (strcmp(argv[i], "-a") == 0 || strcmp(argv[i], "--all") == 0)
+			{
+				display = display + 1;
+			}
+			else if (strcmp(argv[i], "-d") == 0 || strcmp(argv[i], "--domain") == 0)
+			{
+				display = display + 2;
+				i++;
+				if (argv[i])
+				{
+					if (strcmp(argv[i], "-e") != 0 && strcmp(argv[i], "--exclude") != 0 &&
+							strcmp(argv[i], "-a") != 0 && strcmp(argv[i], "--all") != 0 &&
+							strcmp(argv[i], "-d") != 0 && strcmp(argv[i], "--domain") != 0 &&
+							strcmp(argv[i], "-h") != 0 && strcmp(argv[i], "--help") != 0 &&
+							strcmp(argv[i], "") != 0)
+					{
+						strcpy(domene, argv[i]);
+					}
+				}
+				else
+				{
+					fprintf(stderr, "qmgetmailaddr failed: Missing domain...\n\n");
+					printusage();
+					exit(EXIT_FAILURE);
+				}
+			}
+			else if (strcmp(argv[i], "-e") == 0 || strcmp(argv[i], "--exclude") == 0)
+			{
+				i++;
+				if (argv[i])
+				{
+					if (strcmp(argv[i], "-e") != 0 && strcmp(argv[i], "--exclude") != 0 &&
+							strcmp(argv[i], "-a") != 0 && strcmp(argv[i], "--all") != 0 &&
+							strcmp(argv[i], "-d") != 0 && strcmp(argv[i], "--domain") != 0 &&
+							strcmp(argv[i], "-h") != 0 && strcmp(argv[i], "--help") != 0 &&
+							strcmp(argv[i], "") != 0)
+					{
+						strcpy(excluden, argv[i]);
+					}
+				}
+				else
+				{
+					fprintf(stderr, "qmgetmailaddr failed: Missing name to exclude... (Ex. postmaster)\n\n");
+					printusage();
+					exit(EXIT_FAILURE);
+				}
+			}
+			else if (strcmp(argv[i], "-o") == 0 || strcmp(argv[i], "--outputfile") == 0)
+			{
+				i++;
+				if (argv[i])
+				{
+					if (strcmp(argv[i], "-e") != 0 && strcmp(argv[i], "--exclude") != 0 &&
+							strcmp(argv[i], "-a") != 0 && strcmp(argv[i], "--all") != 0 &&
+							strcmp(argv[i], "-o") != 0 && strcmp(argv[i], "--outputfile") != 0 &&
+							strcmp(argv[i], "-d") != 0 && strcmp(argv[i], "--domain") != 0 &&
+							strcmp(argv[i], "-h") != 0 && strcmp(argv[i], "--help") != 0 &&
+							strcmp(argv[i], "") != 0)
+					{
+						strcpy(exportfn, argv[i]);
+					}
+				}
+				else
+				{
+					fprintf(stderr, "qmgetmailaddr failed: Missing filename for export...\n\n");
+					printusage();
+					exit(EXIT_FAILURE);
+				}
+			}
+			else
+			{
+				printusage();
+				exit(EXIT_SUCCESS);
+			}
+		}
+
+		if (display == 1)
+		{
+			getdomainpath("");
+		}
+		else if (display == 2)
+		{
+			getdomainpath(domene);
+		}
+		else if (display == 3)
+		{
+			fprintf(stderr, "qmgetmailaddr failed: You cannot run -a and -d at the same time...\n\n");
+			printusage();
+			exit(EXIT_FAILURE);
+		}
+		else
+		{
+			if (!excluden)
+			{
+				printusage();
+				exit(EXIT_SUCCESS);
+			}
+			else
+				getdomainpath("");
+		}
+	}
+
+	//
+	// Rydde opp litt etter oss...
+	//
+	fclose(assign_fp);
+
+	return EXIT_SUCCESS;
 }
