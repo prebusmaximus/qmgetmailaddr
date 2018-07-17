@@ -36,6 +36,18 @@ int main(int argc, char *argv[])
 	int i;
 	int display;
 
+
+	//
+	// Checking for path and existence of the user VPOPMAIL, without VPOPMAIL program fails.
+	//
+	v = getpwnam(VPOPMAILU);
+	if (!v)
+	{
+		// Could not fetch path for the VPOPMAIL user
+		fprintf(stderr, "qmgetmailaddr failed: vpopmail user missing (%s)....\n", VPOPMAILU);
+		exit(EXIT_FAILURE);
+	}
+
 	//
 	// Checking for path of the QMAIL user in order to get the correct path of the assign file from
 	// qmail.

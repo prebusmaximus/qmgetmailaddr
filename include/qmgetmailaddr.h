@@ -32,7 +32,8 @@
 //
 #define DELIM ":"
 #define QMAILU "qmaild"
-#define VERSION "0.3b"
+#define VPOPMAILU "vpopmail"
+#define VERSION "0.4b"
 
 //
 // Deklarerer funksjoner
@@ -45,6 +46,7 @@ int getdomainpath(char[]);
 // Deklarerer globale variabler
 //
 struct passwd *p;
+struct passwd *v;
 char domain[63];
 char assignpath[256];
 char excluden[256];
