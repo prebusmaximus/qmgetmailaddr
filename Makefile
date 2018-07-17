@@ -20,8 +20,8 @@
 CC=gcc
 OPTS=-g -O2
 LIBS=-I$(PWD)/include/
-CFLAGS=-mcpu=i386 -std=c99 -W -Wall -Wmissing-prototypes -Wformat -c
-LFLAGS=-mcpu=i386 -std=c99 -W -Wall -Wmissing-prototypes -Wformat -o qmgetmailaddr -Xlinker
+CFLAGS=-std=c99 -W -Wall -Wmissing-prototypes -Wformat -c
+LFLAGS=-std=c99 -W -Wall -Wmissing-prototypes -Wformat -o qmgetmailaddr -Xlinker
 PREFIX=/usr
 DESTDIR=$(PREFIX)/bin
 
