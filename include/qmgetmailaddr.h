@@ -1,6 +1,7 @@
 /*
- * <one line to give the program's name and a brief idea of what it does.>
- * Copyright (C) <year> <name of author
+ * qmgetmailaddr - Provice list of email users on a system based on qmail mta.
+ *
+ * Copyright (C) 2006-2018 Preben Holm TÃ¸nnessen
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -17,8 +18,8 @@
  */
 
 //
-// Inkluderer bibliotek som er nødvendige for at programmet skal kunne kjøre
-// 
+// Includes libraries need to run the application
+//
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -28,25 +29,24 @@
 
 //
 // Setter opp definerte variabler
-// 
-#define  DELIM     ":"
-#define  QMAILU    "qmaild"
-#define  VERSION   "0.3 beta"
+//
+#define DELIM ":"
+#define QMAILU "qmaild"
+#define VERSION "0.3b"
 
 //
 // Deklarerer funksjoner
-// 
-void printusage (void);
-int  displayaddr (char[], char[]);
-int  getdomainpath (char[]);
+//
+void printusage(void);
+int displayaddr(char[], char[]);
+int getdomainpath(char[]);
 
 //
 // Deklarerer globale variabler
 //
-struct   passwd   *p;
-char     domene[63];
-char     assignpath[256];
-char     excluden[256];
-char     exportfn[256];
-FILE     *assign_fp;
-
+struct passwd *p;
+char domain[63];
+char assignpath[256];
+char excluden[256];
+char exportfn[256];
+FILE *assign_fp;

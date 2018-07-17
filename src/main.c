@@ -1,21 +1,21 @@
 /*
- * qmgetmailaddr - Provice list of email users on a system based on qmail mta.
- *
- * Copyright (C) 2006-2018 Preben Holm Tønnessen
- *
- * This program is free software: you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the Free
- * Software Foundation, either version 3 of the License, or (at your option)
- * any later version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
- * more details.
- *
- * You should have received a copy of the GNU General Public License along with
- * this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+* qmgetmailaddr - Provice list of email users on a system based on qmail mta.
+*
+* Copyright (C) 2006-2018 Preben Holm Tønnessen
+*
+* This program is free software: you can redistribute it and/or modify it
+* under the terms of the GNU General Public License as published by the Free
+* Software Foundation, either version 3 of the License, or (at your option)
+* any later version.
+*
+* This program is distributed in the hope that it will be useful, but WITHOUT
+* ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or
+* FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+* more details.
+*
+* You should have received a copy of the GNU General Public License along with
+* this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
 //
 // Includes libraries need to run the application
@@ -23,11 +23,11 @@
 #include "qmgetmailaddr.h"
 
 /*
- * 
- * Main function, first running in the application. The main function
- * deals with initalizing all variables and settings need for the application.
- * 
- */
+* 
+* Main function, first running in the application. The main function
+* deals with initalizing all variables and settings need for the application.
+* 
+*/
 int main(int argc, char *argv[])
 {
 	//
@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
 		display = 0;
 
 		//
-		// Det ble sendt argumenter til programmet, da m� vi til � parse litt... :)
+		// Arguments where sendt to the program, lets do some parsing.
 		//
 		for (i = 1; i <= (argc - 1); i++)
 		{
@@ -96,12 +96,12 @@ int main(int argc, char *argv[])
 				if (argv[i])
 				{
 					if (strcmp(argv[i], "-e") != 0 && strcmp(argv[i], "--exclude") != 0 &&
-							strcmp(argv[i], "-a") != 0 && strcmp(argv[i], "--all") != 0 &&
-							strcmp(argv[i], "-d") != 0 && strcmp(argv[i], "--domain") != 0 &&
-							strcmp(argv[i], "-h") != 0 && strcmp(argv[i], "--help") != 0 &&
-							strcmp(argv[i], "") != 0)
+						strcmp(argv[i], "-a") != 0 && strcmp(argv[i], "--all") != 0 &&
+						strcmp(argv[i], "-d") != 0 && strcmp(argv[i], "--domain") != 0 &&
+						strcmp(argv[i], "-h") != 0 && strcmp(argv[i], "--help") != 0 &&
+						strcmp(argv[i], "") != 0)
 					{
-						strcpy(domene, argv[i]);
+						strcpy(domain, argv[i]);
 					}
 				}
 				else
@@ -117,10 +117,10 @@ int main(int argc, char *argv[])
 				if (argv[i])
 				{
 					if (strcmp(argv[i], "-e") != 0 && strcmp(argv[i], "--exclude") != 0 &&
-							strcmp(argv[i], "-a") != 0 && strcmp(argv[i], "--all") != 0 &&
-							strcmp(argv[i], "-d") != 0 && strcmp(argv[i], "--domain") != 0 &&
-							strcmp(argv[i], "-h") != 0 && strcmp(argv[i], "--help") != 0 &&
-							strcmp(argv[i], "") != 0)
+						strcmp(argv[i], "-a") != 0 && strcmp(argv[i], "--all") != 0 &&
+						strcmp(argv[i], "-d") != 0 && strcmp(argv[i], "--domain") != 0 &&
+						strcmp(argv[i], "-h") != 0 && strcmp(argv[i], "--help") != 0 &&
+						strcmp(argv[i], "") != 0)
 					{
 						strcpy(excluden, argv[i]);
 					}
@@ -138,11 +138,11 @@ int main(int argc, char *argv[])
 				if (argv[i])
 				{
 					if (strcmp(argv[i], "-e") != 0 && strcmp(argv[i], "--exclude") != 0 &&
-							strcmp(argv[i], "-a") != 0 && strcmp(argv[i], "--all") != 0 &&
-							strcmp(argv[i], "-o") != 0 && strcmp(argv[i], "--outputfile") != 0 &&
-							strcmp(argv[i], "-d") != 0 && strcmp(argv[i], "--domain") != 0 &&
-							strcmp(argv[i], "-h") != 0 && strcmp(argv[i], "--help") != 0 &&
-							strcmp(argv[i], "") != 0)
+						strcmp(argv[i], "-a") != 0 && strcmp(argv[i], "--all") != 0 &&
+						strcmp(argv[i], "-o") != 0 && strcmp(argv[i], "--outputfile") != 0 &&
+						strcmp(argv[i], "-d") != 0 && strcmp(argv[i], "--domain") != 0 &&
+						strcmp(argv[i], "-h") != 0 && strcmp(argv[i], "--help") != 0 &&
+						strcmp(argv[i], "") != 0)
 					{
 						strcpy(exportfn, argv[i]);
 					}
@@ -167,7 +167,7 @@ int main(int argc, char *argv[])
 		}
 		else if (display == 2)
 		{
-			getdomainpath(domene);
+			getdomainpath(domain);
 		}
 		else if (display == 3)
 		{
@@ -188,7 +188,7 @@ int main(int argc, char *argv[])
 	}
 
 	//
-	// Rydde opp litt etter oss...
+	// Do some cleaning :-)
 	//
 	fclose(assign_fp);
 
