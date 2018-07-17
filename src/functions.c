@@ -127,11 +127,16 @@ int checkvpopmailmysql (void)
     //
     // Declare variables
     //
-    if (!fileexists(v->pw_dir + "/etc/vpopmail.mysql"))
-    {
-        fprintf(stderr, "qmgetmailaddr failed: Userdatabase for vpopmail users MySQL server not able to fetch users...\n");
-        exit(EXIT_FAILURE);
-    }
+    char fpath[256];
+
+    // Fix path to vpopmail.mysql config
+    strcpy(fpath, v->pw_dir);
+    strcat(fpath, "/etc/vpopmail.mysql");
+
+    if (!fileexists(fpath))
+        return 0;
+
+    return 1;
 }
 
 //

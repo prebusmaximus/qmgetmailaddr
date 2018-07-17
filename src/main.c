@@ -50,7 +50,11 @@ int main(int argc, char *argv[])
 	//
 	// Check for existance of mysql configuration on vpopmail
 	//
-	checkvpopmailmysql();
+	if (checkvpopmailmysql())
+	{
+		fprintf(stderr, "qmgetmailaddr failed: Userdatabase for vpopmail users MySQL server not able to fetch users...\n");
+		exit(EXIT_FAILURE);
+	}
 
 	//
 	// Checking for path of the QMAIL user in order to get the correct path of the assign file from
