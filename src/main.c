@@ -37,6 +37,11 @@ int main(int argc, char *argv[])
 	int display;
 
 	//
+	// Adding check to see if vpopmail is using mysql for user handling.
+	//
+	
+	
+	//
 	// Checking for path of the QMAIL user in order to get the correct path of the assign file from
 	// qmail.
 	//

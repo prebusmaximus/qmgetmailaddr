@@ -118,3 +118,13 @@ void printusage(void)
     fprintf(stderr, "\t--all and --domain cannot be combined in search...\n\n");
     fprintf(stderr, "Copyright (C) 2006-2018 Preben Holm Tønnessen\n\n");
 }
+
+//
+// Function to check for mysql support in vpopmail
+//
+int checkvpopmailmysql (void)
+{
+    //
+    // Declare variables
+    //
+}
