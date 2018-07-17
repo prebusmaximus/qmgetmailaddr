@@ -36,7 +36,6 @@ int main(int argc, char *argv[])
 	int i;
 	int display;
 
-
 	//
 	// Checking for path and existence of the user VPOPMAIL, without VPOPMAIL program fails.
 	//

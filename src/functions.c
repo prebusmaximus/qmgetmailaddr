@@ -127,4 +127,24 @@ int checkvpopmailmysql (void)
     //
     // Declare variables
     //
+    if (!fileexists(v->pw_dir + "/etc/vpopmail.mysql"))
+    {
+        fprintf(stderr, "qmgetmailaddr failed: Userdatabase for vpopmail users MySQL server not able to fetch users...\n");
+        exit(EXIT_FAILURE);
+    }
+}
+
+//
+// Function to check for file existence
+//
+int fileexists(const char* filename)
+{
+    FILE *file;
+    if (file = fopen(filename, "r"))
+    {
+        fclose(file);
+        return 1;
+    }
+
+    return 0;
 }

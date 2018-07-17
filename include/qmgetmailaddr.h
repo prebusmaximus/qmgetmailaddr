@@ -41,6 +41,8 @@
 void printusage(void);
 int displayaddr(char[], char[]);
 int getdomainpath(char[]);
+int checkvpopmailmysql (void);
+int fileexists(const char*);
 
 //
 // Deklarerer globale variabler
@@ -49,6 +51,7 @@ struct passwd *p;
 struct passwd *v;
 char domain[63];
 char assignpath[256];
+char assignpathvpopmail[256];
 char excluden[256];
 char exportfn[256];
 FILE *assign_fp;
