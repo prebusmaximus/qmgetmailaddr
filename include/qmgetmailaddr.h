@@ -31,7 +31,7 @@
 #include <ctype.h>
 
 //
-// Setter opp definerte variabler
+// Setting defines for the program
 //
 #define DELIM ":"
 #define QMAILU "qmaild"
@@ -39,7 +39,7 @@
 #define VERSION "0.4b"
 
 //
-// Deklarerer funksjoner
+// Declaring functions
 //
 void printusage(void);
 int displayaddr(char[], char[]);
@@ -48,7 +48,7 @@ int checkvpopmailmysql (void);
 int fileexists(const char*);
 
 //
-// Deklarerer globale variabler
+// Declaring global variables for use in entire application.
 //
 struct passwd *p;
 struct passwd *v;

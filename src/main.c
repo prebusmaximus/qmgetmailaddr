@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
 	if (checkvpopmailmysql())
 	{
 		usemysql = 0;
-		fprintf(stderr, "qmgetmailaddr failed: Userdatabase for vpopmail users MySQL server not able to fetch users...\n");
+		fprintf(stderr, "qmgetmailaddr failed: Userdatabase for vpopmail users on MySQL server, not able to fetch users...\n");
 		exit(EXIT_FAILURE);
 	}
 
