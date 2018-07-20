@@ -17,6 +17,9 @@
  * this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef __QMGETMAILADDR_H__
+#define __QMGETMAILADDR_H__
+
 //
 // Includes libraries need to run the application
 //
@@ -55,3 +58,5 @@ char assignpathvpopmail[256];
 char excluden[256];
 char exportfn[256];
 FILE *assign_fp;
+
+#endif /* qmgetmailaddr.h */

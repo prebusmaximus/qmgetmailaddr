@@ -35,6 +35,7 @@ int main(int argc, char *argv[])
 	//
 	int i;
 	int display;
+	int usemysql = 1;
 
 	//
 	// Checking for path and existence of the user VPOPMAIL, without VPOPMAIL program fails.
@@ -52,6 +53,7 @@ int main(int argc, char *argv[])
 	//
 	if (checkvpopmailmysql())
 	{
+		usemysql = 0;
 		fprintf(stderr, "qmgetmailaddr failed: Userdatabase for vpopmail users MySQL server not able to fetch users...\n");
 		exit(EXIT_FAILURE);
 	}
