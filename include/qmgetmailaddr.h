@@ -1,5 +1,5 @@
 /*
- * qmgetmailaddr - Provice list of email users on a system based on qmail mta.
+ * qmgetmailaddr - Provide list of email users on a system based on qmail mta.
  *
  * Copyright (C) 2006-2018 Preben Holm Tønnessen
  *
@@ -17,15 +17,16 @@
  * this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __QMGETMAILADDR_H__
-#define __QMGETMAILADDR_H__
+#ifndef QMGETMAILADDR_H
+#define QMGETMAILADDR_H
 
 //
-// Includes libraries need to run the application
+// Includes libraries need to run the program
 //
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <argp.h>
 #include <sys/types.h>
 #include <pwd.h>
 #include <ctype.h>
@@ -33,10 +34,10 @@
 //
 // Setting defines for the program
 //
-#define DELIM ":"
-#define QMAILU "qmaild"
-#define VPOPMAILU "vpopmail"
-#define VERSION "0.4b"
+#define DELIM ":" /* Delilmiter for the assign file */
+#define QMAILU "qmaild" /* Qmail user */
+#define VPOPMAILU "vpopmail" /* Vpopmail user */
+#define VERSION "0.4b" /* Program version */
 
 //
 // Declaring functions
@@ -48,7 +49,7 @@ int checkvpopmailmysql (void);
 int fileexists(const char*);
 
 //
-// Declaring global variables for use in entire application.
+// Declaring global variables for use in entire program.
 //
 struct passwd *p;
 struct passwd *v;
