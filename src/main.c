@@ -152,7 +152,7 @@ int main(int argc, char *argv[])
 					exit(EXIT_FAILURE);
 				}
 			}
-			else if (strcmp(argv[i], "-o") == 0 || strcmp(argv[i], "--outputfile") == 0)
+/* 			else if (strcmp(argv[i], "-o") == 0 || strcmp(argv[i], "--outputfile") == 0)
 			{
 				i++;
 				if (argv[i])
@@ -173,7 +173,7 @@ int main(int argc, char *argv[])
 					printusage();
 					exit(EXIT_FAILURE);
 				}
-			}
+			} */
 			else
 			{
 				printusage();
