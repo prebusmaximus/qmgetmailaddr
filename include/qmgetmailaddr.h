@@ -70,10 +70,11 @@ static char args_doc[] = "ARG";
 // Program options we accept.
 //
 static struct argp_option options[] = {
-    {"all", 'a',        0,          0, "Displays all mailadresses on the system" },
-    {"domain", 'd',     "DOMAIN",   0, "Displays all mailadresses for specified domain" },
-    {"exclude", 'e',    "ACCOUNT",  0, "Exclude display of accounts with this name" },
-    {"output", 'o',     "FILE",     0, "Output results to file specified" },
+    {"all", 'a',        0,              0, "Displays all mailadresses on the system" },
+    {"domain", 'd',     "DOMAIN",       0, "Displays all mailadresses for specified domain" },
+    {"exclude", 'e',    "ACCOUNT",      0, "Exclude display of accounts with this name" },
+    {"mysql", 'm',      "CONFIG_FILE",  0, "Use mysql to fetch information"},
+    {"output", 'o',     "FILE",         0, "Output results to file specified" },
     { 0 }
 };
 
