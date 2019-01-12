@@ -60,26 +60,6 @@ char exportfn[256];
 FILE *assign_fp;
 struct arguments arguments;
 
-//
-// Declaring argp options
-//
-const char *argp_program_version = "qmgetmailaddr 0.5b";
-const char *argp_program_bug_address = "preben.tonnessen@gmail.com";
-static char doc[] = "Tiny program to provide list of email users on a system based on the qmail mta with vpopmail installed as management for virtual domains.";
-static char args_doc[] = "ARG";
-
-//
-// Program options we accept.
-//
-static struct argp_option options[] = {
-    {"all", 'a',        0,              0, "Displays all mailadresses on the system", 0 },
-    {"domain", 'd',     "DOMAIN",       0, "Displays all mailadresses for specified domain", 0 },
-    {"exclude", 'e',    "ACCOUNT",      0, "Exclude display of accounts with this name", 0 },
-    {"mysql", 'm',      "CONFIG_FILE",  0, "Use mysql to fetch information", 0},
-    {"output", 'o',     "FILE",         0, "Output results to file specified", 0 },
-    { 0 }
-};
-
 struct arguments {
     char *args[1];
     int all, domain, exclude, output, mysql;
