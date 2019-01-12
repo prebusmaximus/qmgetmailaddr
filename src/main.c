@@ -121,7 +121,7 @@ int main(int argc, char *argv[])
 		//
 		// Arguments where sendt to the program, lets do some parsing.
 		//
-		for (i = 1; i <= (argc - 1); i++)
+		/* for (i = 1; i <= (argc - 1); i++)
 		{
 			if (strcmp(argv[i], "-a") == 0 || strcmp(argv[i], "--all") == 0)
 			{
@@ -197,31 +197,21 @@ int main(int argc, char *argv[])
 				printusage();
 				exit(EXIT_SUCCESS);
 			}
-		}
+		} */
 
-		if (display == 1)
-		{
-			getdomainpath("");
-		}
-		else if (display == 2)
-		{
-			getdomainpath(domain);
-		}
-		else if (display == 3)
+		if (arguments.domain == 1 && arguments.all == 1)
 		{
 			fprintf(stderr, "qmgetmailaddr failed: You cannot run -a and -d at the same time...\n\n");
 			printusage();
 			exit(EXIT_FAILURE);
 		}
-		else
+		else if (arguments.domain == 1 && arguments.all == 0)
 		{
-			if (!excluden)
-			{
-				printusage();
-				exit(EXIT_SUCCESS);
-			}
-			else
-				getdomainpath("");
+			getdomainpath(arguments.domain_name);
+		}
+		else if (arguments.domain == 0 && arguments.all == 1)
+		{
+			getdomainpath("");
 		}
 	}
 
