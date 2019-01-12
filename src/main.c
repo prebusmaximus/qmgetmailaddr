@@ -38,6 +38,14 @@ int main(int argc, char *argv[])
 	int usemysql = 1;
 
 	//
+	// Declare default values for arguments
+	//
+	arguments.all = 0;
+	arguments.domain = 0;
+	arguments.exclude = 0;
+	arguments.output = 0;
+
+	//
 	// Checking for path and existence of the user VPOPMAIL, without VPOPMAIL program fails.
 	//
 	v = getpwnam(VPOPMAILU);
