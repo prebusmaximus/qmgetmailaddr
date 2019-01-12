@@ -92,7 +92,7 @@ int displayaddr(char path[], char domain[])
         while (fgets(buffer, sizeof(buffer), fp) != NULL)
         {
             sep = strtok(buffer, DELIM);
-            if (strcmp(sep, excluden) != 0)
+            if (strcmp(sep, arguments.excluden) != 0)
                 printf("%s@%s\n", sep, domain);
         }
         fclose(fp);

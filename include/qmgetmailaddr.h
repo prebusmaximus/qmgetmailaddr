@@ -58,6 +58,7 @@ char assignpath[256];
 char assignpathvpopmail[256];
 char exportfn[256];
 FILE *assign_fp;
+struct arguments arguments;
 
 //
 // Declaring argp options
