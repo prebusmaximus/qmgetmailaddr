@@ -22,6 +22,11 @@
 //
 #include "qmgetmailaddr.h"
 
+//
+// Our ARGP parser
+//
+static struct argp argp = { options, parse_opt, args_doc, doc };
+
 /*
 * 
 * Main function, first running in the application. The main function

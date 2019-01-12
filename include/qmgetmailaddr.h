@@ -89,11 +89,6 @@ struct arguments {
     char *vpopmysql_file;
 };
 
-//
-// Our ARGP parser
-//
-static struct argp argp = { options, parse_opt, args_doc, doc };
-
 /*  Description of options for arguments of the program.
     fprintf(stderr, "qmgetmailaddr, version %s\n\n", VERSION);
     fprintf(stderr, "Usage: getmailaddr [-ah] [-d domain.tld] [-e excludename]\n\n");
