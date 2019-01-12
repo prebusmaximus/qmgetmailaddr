@@ -37,6 +37,8 @@ int main(int argc, char *argv[])
 	int display;
 	int usemysql = 1;
 
+	struct arguments arguments;
+
 	//
 	// Declare default values for arguments
 	//

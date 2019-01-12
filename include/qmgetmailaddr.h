@@ -47,6 +47,7 @@ int displayaddr(char[], char[]);
 int getdomainpath(char[]);
 int checkvpopmailmysql (void);
 int fileexists(const char*);
+static error_t parse_opt (int, char, struct);
 
 //
 // Declaring global variables for use in entire program.
