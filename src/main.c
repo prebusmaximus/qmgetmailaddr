@@ -28,7 +28,7 @@
 * deals with initalizing all variables and settings need for the application.
 * 
 */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
 	//
 	// Main declaration
@@ -36,8 +36,6 @@ int main(int argc, char *argv[])
 	int i;
 	int display;
 	int usemysql = 1;
-
-	struct arguments arguments;
 
 	//
 	// Declare default values for arguments
