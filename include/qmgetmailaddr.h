@@ -37,7 +37,7 @@
 #define DELIM ":" /* Delilmiter for the assign file */
 #define QMAILU "qmaild" /* Qmail user */
 #define VPOPMAILU "vpopmail" /* Vpopmail user */
-#define VERSION "0.4b" /* Program version */
+#define VERSION "0.5b" /* Program version */
 
 //
 // Declaring functions
@@ -59,5 +59,34 @@ char assignpathvpopmail[256];
 char excluden[256];
 char exportfn[256];
 FILE *assign_fp;
+
+//
+// Declaring argp options
+//
+const char *argp_program_version = "qmgetmailaddr 0.5b";
+const char *argp_program_bug_address = "preben.tonnessen@gmail.com";
+static char doc[] = "Tiny program to provide list of email users on a system based on the qmail mta with vpopmail installed as management for virtual domains.";
+static char args_doc[] = "ARG1 ARG2";
+
+//
+// Program options we accept.
+//
+static struct argp_option options[] = {
+    {"all", 'a',        0, 0, "Displays all mailadresses on the system"},
+    {"domain", 'd',     0, 0, "Displays all mailadresses for specified domain"},
+    {"exclude", 'e',    0, 0, "Exclude display of accounts with this name"}
+}
+
+/*  Description of options for arguments of the program.
+    fprintf(stderr, "qmgetmailaddr, version %s\n\n", VERSION);
+    fprintf(stderr, "Usage: getmailaddr [-ah] [-d domain.tld] [-e excludename]\n\n");
+    fprintf(stderr, "\t--help, -h\t - Displays this screen\n");
+    fprintf(stderr, "\t--all, -a\t - Displays all mailadresses on the system\n");
+    fprintf(stderr, "\t--domain, -d\t - Displays all mailadresses for specified domain\n");
+    fprintf(stderr, "\t--exclude, -e\t - Exclude display of accounts with this name\n\n");
+    fprintf(stderr, "\t--all is assumed if no arguments is given...\n");
+    fprintf(stderr, "\t--all and --domain cannot be combined in search...\n\n");
+    fprintf(stderr, "Copyright (C) 2006-2018 Preben Holm Tønnessen\n\n");
+*/
 
 #endif /* qmgetmailaddr.h */
