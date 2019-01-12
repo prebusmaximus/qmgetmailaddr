@@ -44,6 +44,12 @@ int main(int argc, char *argv[])
 	arguments.domain = 0;
 	arguments.exclude = 0;
 	arguments.output = 0;
+	arguments.mysql = 0;
+
+	//
+	// Calling function to parse arguments
+	//
+	arg_parse(&argp, argc, argv, 0, 0, &arguments);
 
 	//
 	// Checking for path and existence of the user VPOPMAIL, without VPOPMAIL program fails.

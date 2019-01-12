@@ -80,10 +80,11 @@ static struct argp_option options[] = {
 
 struct arguments {
     char *args[1];
-    int all, domain, exclude, output;
+    int all, domain, exclude, output, mysql;
     char *domain_name;
     char *excluden;
     char *output_file;
+    char *vpopmysql_file;
 };
 
 //

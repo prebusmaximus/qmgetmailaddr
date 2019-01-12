@@ -50,6 +50,11 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
             arguments->output_file = arg;
             break;
 
+        case 'm':
+            arguments->mysql = 1;
+            arguments->vpopmysql_file = arg;
+            break;
+
         case ARGP_KEY_ARG:
             if (state->arg_num >= 2)
             {
