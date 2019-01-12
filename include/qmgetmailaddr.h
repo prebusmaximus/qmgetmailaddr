@@ -42,12 +42,12 @@
 //
 // Declaring functions
 //
-void printusage(void);
-int displayaddr(char[], char[]);
-int getdomainpath(char[]);
+void printusage (void);
+int displayaddr (char[], char[]);
+int getdomainpath (char[]);
 int checkvpopmailmysql (void);
-int fileexists(const char*);
-static error_t parse_opt(int, char *, struct argp_state);
+int fileexists (const char*);
+static error_t parse_opt (int, char *, struct argp_state);
 
 //
 // Declaring global variables for use in entire program.

@@ -22,7 +22,7 @@
 //
 #include "qmgetmailaddr.h"
 
-int getdomainpath(char domainarg[])
+int getdomainpath (char domainarg[])
 {
     //
     // Declaring variables
@@ -69,7 +69,7 @@ int getdomainpath(char domainarg[])
     return EXIT_SUCCESS;
 }
 
-int displayaddr(char path[], char domain[])
+int displayaddr (char path[], char domain[])
 {
     //
     // Declaring variables
@@ -106,7 +106,7 @@ int displayaddr(char path[], char domain[])
     return EXIT_SUCCESS;
 }
 
-void printusage(void)
+void printusage (void)
 {
     fprintf(stderr, "qmgetmailaddr, version %s\n\n", VERSION);
     fprintf(stderr, "Usage: getmailaddr [-ah] [-d domain.tld] [-e excludename]\n\n");
@@ -142,7 +142,7 @@ int checkvpopmailmysql (void)
 //
 // Function to check for file existence
 //
-int fileexists(const char* filename)
+int fileexists (const char* filename)
 {
     FILE *file;
     if (file = fopen(filename, "r"))
