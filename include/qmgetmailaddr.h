@@ -53,10 +53,8 @@ int fileexists(const char*);
 //
 struct passwd *p;
 struct passwd *v;
-char domain[63];
 char assignpath[256];
 char assignpathvpopmail[256];
-char excluden[256];
 char exportfn[256];
 FILE *assign_fp;
 
@@ -66,16 +64,31 @@ FILE *assign_fp;
 const char *argp_program_version = "qmgetmailaddr 0.5b";
 const char *argp_program_bug_address = "preben.tonnessen@gmail.com";
 static char doc[] = "Tiny program to provide list of email users on a system based on the qmail mta with vpopmail installed as management for virtual domains.";
-static char args_doc[] = "ARG1 ARG2";
+static char args_doc[] = "ARG";
 
 //
 // Program options we accept.
 //
 static struct argp_option options[] = {
-    {"all", 'a',        0, 0, "Displays all mailadresses on the system"},
-    {"domain", 'd',     0, 0, "Displays all mailadresses for specified domain"},
-    {"exclude", 'e',    0, 0, "Exclude display of accounts with this name"}
-}
+    {"all", 'a',        0,          0, "Displays all mailadresses on the system" },
+    {"domain", 'd',     "DOMAIN",   0, "Displays all mailadresses for specified domain" },
+    {"exclude", 'e',    "ACCOUNT",  0, "Exclude display of accounts with this name" },
+    {"output", 'o',     "FILE",     0, "Output results to file specified" },
+    { 0 }
+};
+
+struct arguments {
+    char *args[1];
+    int all, domain, exclude, output;
+    char *domain_name;
+    char *excluden;
+    char *output_file;
+};
+
+//
+// Our ARGP parser
+//
+static struct argp argp = { options, parse_opt, args_doc, doc };
 
 /*  Description of options for arguments of the program.
     fprintf(stderr, "qmgetmailaddr, version %s\n\n", VERSION);
