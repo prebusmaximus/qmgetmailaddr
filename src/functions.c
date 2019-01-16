@@ -1,5 +1,5 @@
 /*
-* qmgetmailaddr - Provice list of email users on a system based on qmail mta.
+* qmgetmailaddr - Provide list of email users on a system based on qmail mta.
 *
 * Copyright (C) 2006-2018 Preben Holm Tønnessen
 *
