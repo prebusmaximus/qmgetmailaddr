@@ -30,11 +30,12 @@
 #include <sys/types.h>
 #include <pwd.h>
 #include <ctype.h>
+#include <mysql/mysql.h>
 
 //
 // Setting defines for the program
 //
-#define DELIM ":" /* Delilmiter for the assign file */
+#define DELIM ":" /* Delimiter for the assign file */
 #define QMAILU "qmaild" /* Qmail user */
 #define VPOPMAILU "vpopmail" /* Vpopmail user */
 #define VERSION "0.5b" /* Program version */
