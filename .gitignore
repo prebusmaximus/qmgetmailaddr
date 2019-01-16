@@ -1,0 +1,5 @@
+#ignore all .o files
+src/*.o
+
+#ignore program executable
+qmgetmailaddr
