@@ -20,7 +20,10 @@
 //
 // Includes libraries need to run the application
 //
+#ifndef QMGETMAILADDR_H
 #include "qmgetmailaddr.h"
+#endif
+
 
 int getdomainpath (char domainarg[])
 {
@@ -145,7 +148,7 @@ int checkvpopmailmysql (void)
 int fileexists (const char* filename)
 {
     FILE *file;
-    if (file = fopen(filename, "r"))
+    if ((file = fopen(filename, "r")))
     {
         fclose(file);
         return 1;

@@ -20,17 +20,14 @@
 //
 // Includes libraries need to run the application
 //
+#ifndef QMGETMAILADDR_H
 #include "qmgetmailaddr.h"
-
-//
-// Our ARGP parser
-//
-static struct argp argp = { options, parse_opt, args_doc, doc };
+#endif
 
 //
 // Declaring argp options
 //
-const char *argp_program_version = "qmgetmailaddr 0.5b";
+const char *argp_program_version = "qmgetmailaddr " VERSION;
 const char *argp_program_bug_address = "preben.tonnessen@gmail.com";
 static char doc[] = "Tiny program to provide list of email users on a system based on the qmail mta with vpopmail installed as management for virtual domains.";
 static char args_doc[] = "ARG";
@@ -56,11 +53,9 @@ static struct argp_option options[] = {
 int main(int argc, char **argv)
 {
 	//
-	// Main declaration
+	// Our ARGP parser
 	//
-	int i;
-	int display;
-	int usemysql = 1;
+	static struct argp argp = { options, parse_opt, args_doc, doc, 0, NULL, NULL };
 
 	//
 	// Declare default values for arguments
@@ -74,7 +69,7 @@ int main(int argc, char **argv)
 	//
 	// Calling function to parse arguments
 	//
-	arg_parse(&argp, argc, argv, 0, 0, &arguments);
+	argp_parse(&argp, argc, argv, 0, 0, &arguments);
 
 	//
 	// Checking for path and existence of the user VPOPMAIL, without VPOPMAIL program fails.
@@ -92,7 +87,6 @@ int main(int argc, char **argv)
 	//
 	if (checkvpopmailmysql())
 	{
-		usemysql = 0;
 		fprintf(stderr, "qmgetmailaddr failed: Userdatabase for vpopmail users on MySQL server, not able to fetch users...\n");
 		exit(EXIT_FAILURE);
 	}
