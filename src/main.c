@@ -27,7 +27,11 @@
 //
 // Declaring argp options
 //
-const char *argp_program_version = "qmgetmailaddr " VERSION;
+const char *argp_program_version = "qmgetmailaddr " VERSION "\n\nCopyright (C) 2019, Preben Holm Toennessen" 
+                                   "\n\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.\n" 
+								   "This is free software: you are free to change and redistribute it.\n"
+								   "There is NO WARRANTY, to the extent permitted by law.\n\n"
+								   "Written by Preben Holm Toennessen.";
 const char *argp_program_bug_address = "preben.tonnessen@gmail.com";
 static char doc[] = "Tiny program to provide list of email users on a system based on the qmail mta with vpopmail installed as management for virtual domains.";
 static char args_doc[] = "ARG";
