@@ -44,7 +44,6 @@
 //
 // Declaring functions
 //
-void printusage (void);
 int displayaddr (char path[], char domain[]);
 int getdomainpath (char[]);
 int checkvpopmailmysql (void);
