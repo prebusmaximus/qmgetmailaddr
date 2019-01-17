@@ -36,6 +36,7 @@
 // Setting defines for the program
 //
 #define DELIM ":" /* Delimiter for the assign file */
+#define MYSQL_DELIM "|" /* Delimiter for the mysql config file */
 #define QMAILU "qmaild" /* Qmail user */
 #define VPOPMAILU "vpopmail" /* Vpopmail user */
 #define VERSION "0.5b" /* Program version */
@@ -60,12 +61,22 @@ char assignpathvpopmail[256];
 char exportfn[256];
 FILE *assign_fp;
 struct arguments arguments;
+MYSQL *mysql_conn;
+MYSQL_RES *mysql_res;
+MYSQL_ROW mysql_row;
+
+struct mysql_cInfo {
+    char *server;
+    char *username;
+    char *password;
+    char *database;
+};
 
 struct arguments {
     char *args[1];
     int all, domain, exclude, output, mysql;
     char *domain_name;
-    char *excluden;
+    char *exclude_name;
     char *output_file;
     char *vpopmysql_file;
 };

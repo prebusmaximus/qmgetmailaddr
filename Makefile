@@ -1,7 +1,7 @@
 #
-# qmgetmailaddr - Provice list of email users on a system based on qmail mta.
+# qmgetmailaddr - Provide list of email users on a system based on qmail mta.
 #
-# Copyright (C) 2006-2018 Preben Holm Tønnessen
+# Copyright (C) 2006-2019 Preben Holm Tønnessen
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by the Free

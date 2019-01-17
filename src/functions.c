@@ -1,7 +1,7 @@
 /*
 * qmgetmailaddr - Provide list of email users on a system based on qmail mta.
 *
-* Copyright (C) 2006-2018 Preben Holm Tønnessen
+* Copyright (C) 2006-2019 Preben Holm Tønnessen
 *
 * This program is free software: you can redistribute it and/or modify it
 * under the terms of the GNU General Public License as published by the Free
@@ -95,7 +95,7 @@ int displayaddr (char path[], char domain[])
         while (fgets(buffer, sizeof(buffer), fp) != NULL)
         {
             sep = strtok(buffer, DELIM);
-            if (strcmp(sep, arguments.excluden) != 0)
+            if (strcmp(sep, arguments.exclude_name) != 0)
                 printf("%s@%s\n", sep, domain);
         }
         fclose(fp);

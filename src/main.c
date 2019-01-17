@@ -1,7 +1,7 @@
 /*
 * qmgetmailaddr - Provide list of email users on a system based on qmail mta.
 *
-* Copyright (C) 2006-2018 Preben Holm Tønnessen
+* Copyright (C) 2006-2019 Preben Holm Tønnessen
 *
 * This program is free software: you can redistribute it and/or modify it
 * under the terms of the GNU General Public License as published by the Free
@@ -48,6 +48,11 @@ static struct argp_option options[] = {
     { 0 }
 };
 
+//
+// Global declarations
+//
+struct mysql_cInfo mysql_cInfo;
+
 /*
 * 
 * Main function, first running in the application. The main function
@@ -65,9 +70,11 @@ int main(int argc, char **argv)
 	// Declare default values for arguments
 	//
 	arguments.all = 0;
-	arguments.domain = 0;
+	arguments.domain_name = "";
 	arguments.exclude = 0;
+	arguments.exclude_name = "";
 	arguments.output = 0;
+	arguments.output_file = "";	
 	arguments.mysql = 0;
 
 	//
@@ -137,6 +144,8 @@ int main(int argc, char **argv)
 	}
 	else
 	{
+		printf("DOMAIN? %s\nALL? %s\n", arguments.domain ? "yes" : "no", arguments.all ? "yes" : "no");
+
 		if (arguments.domain == 1 && arguments.all == 1)
 		{
 			fprintf(stderr, "qmgetmailaddr failed: You cannot run -a and -d at the same time...\n\n");

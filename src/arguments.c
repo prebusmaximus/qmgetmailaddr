@@ -1,7 +1,7 @@
 /*
 * qmgetmailaddr - Provide list of email users on a system based on qmail mta.
 *
-* Copyright (C) 2006-2018 Preben Holm Tønnessen
+* Copyright (C) 2006-2019 Preben Holm Tønnessen
 *
 * This program is free software: you can redistribute it and/or modify it
 * under the terms of the GNU General Public License as published by the Free
@@ -39,16 +39,16 @@ error_t parse_opt (int key, char *arg, struct argp_state *state)
             break;
 
         case 'd':
-            arguments->domain = 1;
             arguments->domain_name = arg;
+            printf("ARG1 = %s\n", arg);            
             break;
 
         case 'e':
             arguments->exclude = 1;
+            arguments->exclude_name = arg;
             break;
 
         case 'o':
-            arguments->output = 1;
             arguments->output_file = arg;
             break;
 
@@ -58,12 +58,12 @@ error_t parse_opt (int key, char *arg, struct argp_state *state)
             break;
 
         case ARGP_KEY_ARG:
-            if (state->arg_num >= 2) argp_usage(state);
-            arguments->args[state->arg_num] = arg;
+            if (state->arg_num >= 1) argp_usage(state);
+            arguments->args[state->arg_num] = arg;            
             break;
 
         case ARGP_KEY_END:
-            if (state->arg_num < 2) argp_usage (state);
+            if (state->arg_num < 1) argp_usage (state);
             break;
 
         default:
