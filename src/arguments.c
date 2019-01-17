@@ -39,8 +39,8 @@ error_t parse_opt (int key, char *arg, struct argp_state *state)
             break;
 
         case 'd':
-            arguments->domain_name = arg;
-            printf("ARG1 = %s\n", arg);            
+            arguments->domain = 1;
+            arguments->domain_name = arg;        
             break;
 
         case 'e':

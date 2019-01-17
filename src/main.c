@@ -43,7 +43,7 @@ static struct argp_option options[] = {
     {"all", 'a',        0,              0, "Displays all mailadresses on the system", 0 },
     {"domain", 'd',     "DOMAIN",       0, "Displays all mailadresses for specified domain", 0 },
     {"exclude", 'e',    "ACCOUNT",      0, "Exclude display of accounts with this name", 0 },
-    {"mysql", 'm',      "CONFIG_FILE",  0, "Use mysql to fetch information", 0},
+    {"mysql", 'm',      "CONFIG_FILE",  OPTION_ARG_OPTIONAL, "Use mysql to fetch information", 0},
     {"output", 'o',     "FILE",         0, "Output results to file specified", 0 },
     { 0 }
 };
