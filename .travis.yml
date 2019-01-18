@@ -1,2 +1,2 @@
-language: c
+language: objectivec
 script: make && make install
