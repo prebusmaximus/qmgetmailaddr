@@ -27,8 +27,9 @@
 //
 // Declaring argp options
 //
-const char *argp_program_version = "qmgetmailaddr " VERSION "\n\nCopyright (C) 2019, Preben Holm Toennessen" 
-                                   "\n\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.\n" 
+const char *argp_program_version = "qmgetmailaddr " VERSION "\n\n"
+								   "Copyright (C) 2006-2019, Preben Holm Toennessen\n\n" 
+                                   "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.\n" 
 								   "This is free software: you are free to change and redistribute it.\n"
 								   "There is NO WARRANTY, to the extent permitted by law.\n\n"
 								   "Written by Preben Holm Toennessen.";
@@ -43,7 +44,7 @@ static struct argp_option options[] = {
     {"all", 'a',        0,              0, "Displays all mailadresses on the system", 0 },
     {"domain", 'd',     "DOMAIN",       0, "Displays all mailadresses for specified domain", 0 },
     {"exclude", 'e',    "ACCOUNT",      0, "Exclude display of accounts with this name", 0 },
-    {"mysql", 'm',      "CONFIG_FILE",  OPTION_ARG_OPTIONAL, "Use mysql to fetch information", 0},
+    {"mysql", 'm',      "CONFIG_FILE",  OPTION_ARG_OPTIONAL, "Use mysql to fetch information. If you do not add an argument the program will try to use default path for vpopmail mysql configuration file.", 0},
     {"output", 'o',     "FILE",         0, "Output results to file specified", 0 },
     { 0 }
 };
@@ -149,7 +150,6 @@ int main(int argc, char **argv)
 		if (arguments.domain == 1 && arguments.all == 1)
 		{
 			fprintf(stderr, "qmgetmailaddr failed: You cannot run -a and -d at the same time...\n\n");
-			printusage();
 			exit(EXIT_FAILURE);
 		}
 		else if (arguments.domain == 1 && arguments.all == 0)
