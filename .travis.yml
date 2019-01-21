@@ -1,2 +1,3 @@
-language: objectivec
+language: c
 script: make && make install
+compiler: gcc
