@@ -47,11 +47,6 @@ static struct argp_option options[] = {
     { 0 }
 };
 
-//
-// Global declarations
-//
-struct mysql_cInfo mysql_cInfo;
-
 /*
 * 
 * Main function, first running in the application. The main function
@@ -75,6 +70,11 @@ int main(int argc, char **argv)
 	arguments.output = 0;
 	arguments.output_file = "";	
 	arguments.mysql = 0;
+
+	mysql_cInfo.server = "";
+	mysql_cInfo.username = "";
+	mysql_cInfo.password = "";
+	mysql_cInfo.database = "";
 
 	//
 	// Calling function to parse arguments

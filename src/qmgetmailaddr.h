@@ -61,6 +61,7 @@ char assignpathvpopmail[256];
 char exportfn[256];
 FILE *assign_fp;
 struct arguments arguments;
+struct mysql_cInfo mysql_cInfo;
 MYSQL *mysql_conn;
 MYSQL_RES *mysql_res;
 MYSQL_ROW mysql_row;
