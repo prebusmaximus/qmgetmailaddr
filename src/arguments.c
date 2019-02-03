@@ -20,9 +20,7 @@
 //
 // Includes libraries need to run the application
 //
-#ifndef QMGETMAILADDR_H
 #include "qmgetmailaddr.h"
-#endif
 
 error_t parse_opt (int key, char *arg, struct argp_state *state)
 {

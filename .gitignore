@@ -3,3 +3,6 @@ src/*.o
 
 #ignore program executable
 qmgetmailaddr
+
+#ignore .vscode folder
+.vscode/*
