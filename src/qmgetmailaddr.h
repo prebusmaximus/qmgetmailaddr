@@ -1,3 +1,4 @@
+#pragma once
 /*
  * qmgetmailaddr - Provide list of email users on a system based on qmail mta.
  *
